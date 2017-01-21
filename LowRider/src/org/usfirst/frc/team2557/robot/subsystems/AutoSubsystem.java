@@ -11,11 +11,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutoSubsystem extends Subsystem {
 	
 	public void AutoSub(){
-		RobotMap.rightDriveEncoder.reset();
+//		RobotMap.rightDriveEncoder.reset();
 		
-		while(RobotMap.rightDriveEncoder.get() >= -500){
+		while(RobotMap.rightDriveEncoder.get() >= -1850 && RobotMap.leftDriveEncoder.get() >= -1850){
 			RobotMap.robotDrive.arcadeDrive(0,0.5);
 			SmartDashboard.putNumber("encoderCount", RobotMap.rightDriveEncoder.get());
+		}
+		while(RobotMap.rightDriveEncoder.get() <= -1850 && RobotMap.leftDriveEncoder.get() <= -1850){
+			RobotMap.robotDrive.arcadeDrive(0,0);
 		}
 		
 		}

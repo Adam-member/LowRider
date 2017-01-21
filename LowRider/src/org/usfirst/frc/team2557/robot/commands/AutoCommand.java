@@ -1,7 +1,9 @@
 package org.usfirst.frc.team2557.robot.commands;
 
 import org.usfirst.frc.team2557.robot.Robot;
+import org.usfirst.frc.team2557.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -26,7 +28,7 @@ public class AutoCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (RobotMap.rightDriveEncoder.get() <= -500 && RobotMap.leftDriveEncoder.get() <= -500) || Timer.getMatchTime() > 4;
     }
 
     // Called once after isFinished returns true
